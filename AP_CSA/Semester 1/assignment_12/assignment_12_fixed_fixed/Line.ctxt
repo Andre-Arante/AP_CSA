@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Line
+comment1.params=firstX\ firstY\ secondX\ secondY
+comment1.target=Line(double,\ double,\ double,\ double)
+comment2.params=
+comment2.target=void\ slopeInterceptForm()
+comment3.params=inputX
+comment3.target=double\ solveForY(double)
+comment4.params=
+comment4.target=void\ printY()
+comment5.params=pX\ pY
+comment5.target=void\ perpindicularLine(double,\ double)
+numComments=6
