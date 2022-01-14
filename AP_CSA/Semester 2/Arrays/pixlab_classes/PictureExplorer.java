@@ -1,3 +1,26 @@
+/*
+ Act 3
+1. What is the row index for the top left corner of the picture?
+0
+
+2. What is the column index for the top left corner of the picture?
+0
+
+3. Width = 640 px. What is right most column idx?
+639
+
+4. Height = 480. What is bottom most row idx?
+479
+
+5. Does row increase left to right or top to bottom?
+top to bottom
+
+6. Does column idx increase left to right or top to bottom?
+left to right
+
+7. yes i can see them
+*/
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
