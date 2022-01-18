@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=Main
-comment1.params=args
-comment1.target=void\ main(java.lang.String[])
-comment2.params=min\ max
-comment2.target=int\ randNum(int,\ int)
-comment2.text=\r\n\ Generates\ a\ random\ number\ between\ min\ and\ max,\ inclusive\:\ [min,\ max].\r\n\r\n\ @param\ min\ -\ the\ minimum\ possible\ value\ that\ could\ be\ randomly\ generated.\r\n\ @param\ max\ -\ the\ maximum\ possible\ value\ that\ could\ be\ randomly\ generated.\r\n\ @return\ \ \ \ \ \ a\ random\ number\ in\ the\ range\ [min,\ max].\r\n
-numComments=3
