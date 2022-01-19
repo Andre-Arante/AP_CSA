@@ -78,31 +78,6 @@ public class Picture extends SimplePicture {
     }
 
     /**
-     * Method to set the blue to 0
-     */
-    public void zeroBlue() {
-        Pixel[][] pixels = this.getPixels2D();
-        for (Pixel[] rowArray : pixels) {
-            for (Pixel pixelObj : rowArray) {
-                pixelObj.setBlue(0);
-            }
-        }
-    }
-
-    /**
-     * Method to set none blue values to 0
-     */
-    public void keepOnlyBlue() {
-        Pixel[][] pixels = this.getPixels2D();
-        for (Pixel[] rowArray : pixels) {
-            for (Pixel px : rowArray) {
-                px.setRed(0);
-                px.setGreen(0);
-            }
-        }
-    }
-
-    /**
      * Method that mirrors the picture around a
      * vertical mirror in the center of the picture
      * from left to right
@@ -192,6 +167,31 @@ public class Picture extends SimplePicture {
         this.write("collage.jpg");
     }
 
+        /**
+     * Method to set the blue to 0
+     */
+    public void zeroBlue() {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                pixelObj.setBlue(0);
+            }
+        }
+    }
+
+    /**
+     * Method to set none blue values to 0
+     */
+    public void keepOnlyBlue() {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel px : rowArray) {
+                px.setRed(0);
+                px.setGreen(0);
+            }
+        }
+    }
+
     /**
      * Method to negate an image
      **/
@@ -203,6 +203,31 @@ public class Picture extends SimplePicture {
                 px.setBlue(255 - px.getBlue());
             }
         }
+    }
+
+    /* Method to convert an image to grayscale by setting  RGB values to avg  */
+    public void grayscale() {
+      for (Pixel[] row : this.getPixels2D()) {
+        for (Pixel px : row) {
+          // get avg
+          int avg = px.getRed() + px.getGreen() + px.getBlue();
+          avg /= 3.0;
+
+          // set all pixels to value
+          px.setRed(avg);
+          px.setGreen(avg);
+          px.setBlue(avg);
+        }
+      }
+    }
+
+    // Method to fix underwater visability
+    public void fixUnderwater() {
+      for (Pixel[] row : this.getPixels2D()) {
+        for (Pixel px : row) {
+          px.setRed(px.getRed()*4);
+        }
+      }
     }
 
     /**

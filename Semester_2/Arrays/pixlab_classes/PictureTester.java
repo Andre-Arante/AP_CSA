@@ -1,3 +1,4 @@
+
 /**
  * This class contains class (static) methods
  * that will help you test the Picture class
@@ -71,7 +72,20 @@ public class PictureTester {
         temple.explore();
     }
 
-    
+    public static void testGrayscale() {
+        Picture temple = new Picture("temple.jpg");
+        temple.explore();
+        temple.grayscale();
+        temple.explore();
+    }
+
+    public static void testFixUnderwater() {
+      Picture water = new Picture("water.jpg");
+        water.explore();
+        water.fixUnderwater();
+        water.explore();
+    }
+
     /**
      * Main method for testing.  Every class can have a main
      * method in Java
@@ -80,13 +94,13 @@ public class PictureTester {
         // uncomment a call here to run a test
         // and comment out the ones you don't want
         // to run
-        testZeroBlue();
-        testKeepOnlyBlue();
+        // testZeroBlue();
+        // testKeepOnlyBlue();
         //testKeepOnlyRed();
         //testKeepOnlyGreen();
-        testNegate();
-        //testGrayscale();
-        //testFixUnderwater();
+        // testNegate();
+        // testGrayscale();
+        testFixUnderwater();
         //testMirrorVertical();
         //testMirrorTemple();
         //testMirrorArms();
