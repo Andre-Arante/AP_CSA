@@ -91,7 +91,7 @@ public class Picture extends SimplePicture {
             for (int col = 0; col < width / 2; col++) {
                 leftPixel = pixels[row][col];
                 rightPixel = pixels[row][width - 1 - col];
-                rightPixel.setColor(leftPixel.getColor());
+                leftPixel.setColor(rightPixel.getColor());
             }
         }
     }
@@ -229,6 +229,44 @@ public class Picture extends SimplePicture {
         }
       }
     }
+
+    // method to mirror horizontally
+    public void mirrorHorizontal() {      
+      Pixel[][] pixels = this.getPixels2D();
+      Pixel top, bottom;
+      top = bottom = null;
+      int height = pixels.length;
+      
+      for (int r = 0; r < height/2; r++) {
+        for (int c = 0; c < pixels[0].length; c++) {
+          top = pixels[r][c];
+          bottom = pixels[height - 1 - r][c];
+          bottom.setColor(top.getColor());
+        }
+      }
+
+    }
+
+    public void mirrorDiagonal() {
+      Pixel[][] pixels = this.getPixels2D();
+      Pixel px, opp;
+      px = opp = null;
+      int max = pixels.length;
+      if(pixels[0].length < max) {
+        max = pixels[0].length;
+      }
+
+      for (int r = 0; r < max; r++) {
+        for (int c = 0; c < r; c++) {
+          // check for diagonal line
+          
+          px = pixels[c][r];
+          opp = pixels[r][c];
+          px.setColor(opp.getColor());
+        }
+      }
+    }
+
 
     /**
      * /**
