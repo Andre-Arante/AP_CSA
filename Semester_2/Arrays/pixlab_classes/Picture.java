@@ -1,4 +1,6 @@
-import java.awt.image.BufferedImage;
+ import java.awt.image.BufferedImage;
+import java.awt.Color;
+
 
 /**
  * A class that represents a picture.  This class inherits from
@@ -115,8 +117,37 @@ public class Picture extends SimplePicture {
                 rightPixel = pixels[row]
                         [mirrorPoint - col + mirrorPoint];
                 rightPixel.setColor(leftPixel.getColor());
+                count++;
             }
         }
+    }
+
+    /**
+      * Method to mirror the arms of a snowman
+    */
+    public void mirrorArms() {
+      int mirrorPoint = 191;
+      Pixel left, right = null;
+      Pixel[][] pixels = this.getPixels2D();
+      
+      // box 1: (159, 104) to (191, 169)
+      for (int row = 159; row < 191; row++) {
+        for (int col = 104; col < 169; col++) {
+          left = pixels[row][col];
+          right = pixels[mirrorPoint - row + mirrorPoint][col];
+          right.setColor(left.getColor());
+        }
+      }
+
+      // box 2: (169, 236) to (194, 294)
+      for (int row = 169; row < 194; row++) {
+        for (int col = 236; col < 294; col++) {
+          left = pixels[row][col];
+          right = pixels[mirrorPoint - row + mirrorPoint][col];
+          right.setColor(left.getColor());
+        }
+      }
+
     }
 
     /**
@@ -275,7 +306,45 @@ public class Picture extends SimplePicture {
      * @param edgeDist the distance for finding edges
      */
     public void edgeDetection(int edgeDist) {
+      Pixel left, right, top, bottom = null;
+      Pixel[][] pixels = this.getPixels2D();
+      Color rightColor, bottomColor = null;
+      Picture s = new Picture("swan.jpg");
+    
+      
+      // iterate left to right
+      for(int row = 0; row < pixels.length; row++) {
+        for(int col = 0; col < pixels[0].length-1; col++) {
+          left = pixels[row][col];
+          right = pixels[row][col+1];
+          rightColor = right.getColor();
+          if (left.colorDistance(rightColor) > edgeDist) {
+            left.setColor(Color.BLACK);
+          }
+          else {
+            left.setColor(Color.WHITE);
+          }
+        }
+      }
 
+      // Create a copy
+      copy(s, 0, 0);
+      pixels = this.getPixels2D();
+
+      // iterate top to bottom
+      for(int row = 0; row < pixels.length-1; row++) {
+        for(int col = 0; col < pixels[0].length; col++) {
+          top = pixels[row][col];
+          bottom = pixels[row+1][col];
+          bottomColor = bottom.getColor();
+          if (top.colorDistance(bottomColor) > edgeDist) {
+            top.setColor(Color.BLACK);
+          }
+          else {
+            top.setColor(Color.WHITE);
+          }
+        }
+      }
     }
 
 
