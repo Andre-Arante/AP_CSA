@@ -347,6 +347,67 @@ public class Picture extends SimplePicture {
       }
     }
 
+    /* Method for encoding a message within a picture */
+    public void encode(Picture message) {
+      Pixel[][] pixels = this.getPixels2D();
+      Pixel[][] msg = message.getPixels2D();
+
+      // Change all red values in msg to even
+      for (int row = 0; row < msg.length; row++) {
+        for (int col = 0; col < msg[0].length; col++) {
+          if (msg[row][col].getRed() % 2 == 1) {
+            msg[row][col].setRed(msg[row][col].getRed()-1);
+          }
+        }
+      }
+
+      // Change all red values in both to odd if corresponding pixels is near black
+      for (int row = 0; row < msg.length; row++) {
+        for (int col = 0; col < msg[0].length; col++) {
+          // check if black in message
+          if (msg[row][col].colorDistance(Color.BLACK) < 15) {
+            // check if even
+            if (pixels[row][col].getRed() % 2 == 0) {
+              pixels[row][col].setRed(pixels[row][col].getRed()+1);
+            }
+            // code for testing if succesfully encryped
+            // pixels[row][col].setColor(Color.BLACK);
+          }
+        }
+        
+      }
+    }
+
+    /* Method for decoding an encrypted message */
+    public void decode(Picture message) {
+      Pixel[][] pixels = this.getPixels2D();
+      Pixel[][] msg = message.getPixels2D();
+
+      // change all msg black pixels to black within the encrypted picture
+      for (int row = 0; row < msg.length; row++) {
+        for (int col = 0; col < msg[0].length; col++) {
+          // check if black in message
+          if (msg[row][col].colorDistance(Color.BLACK) < 15) {
+            pixels[row][col].setColor(Color.BLACK);
+          }
+        }
+      }
+    } 
+
+    // Method to implement a chromakey
+    public void chromakey(Picture backdrop) {
+      Pixel[][] pixels = this.getPixels2D();
+      Pixel[][] bd = backdrop.getPixels2D();
+      Color target = pixels[0][0].getColor();
+
+      for (int row = 0; row < pixels.length; row++) {
+        for (int col = 0; col < pixels[0].length; col++) {
+          if (pixels[row][col].colorDistance(target) < 75) {
+            pixels[row][col].setColor(bd[row][col].getColor());
+          }
+        }
+      }
+    }
 
     /* Main method for testing - each class in Java can have a main
      * method

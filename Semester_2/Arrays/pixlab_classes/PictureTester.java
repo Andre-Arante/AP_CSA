@@ -103,6 +103,25 @@ public class PictureTester {
       snowman.explore();
     }
 
+    public static void testEncodeAndDecode() {
+      Picture msg = new Picture("msg.jpg");
+      Picture beach = new Picture("beach.jpg");
+
+      beach.encode(msg);
+      beach.explore();
+
+      beach.decode(msg);
+      beach.explore();
+    }
+
+    public static void testChromakey() {
+      Picture greenscreen = new Picture("shia.jpg");
+      Picture beach = new Picture("beach.jpg");
+
+      greenscreen.chromakey(beach);
+      greenscreen.explore();
+    }
+
     /**
      * Main method for testing.  Every class can have a main
      * method in Java
@@ -126,10 +145,10 @@ public class PictureTester {
         // testMirrorDiagonal();
         //testCollage();
         //testCopy();
-        testEdgeDetection();
+        // testEdgeDetection();
         //testEdgeDetection2();
-        //testChromakey();
-        //testEncodeAndDecode();
+        testChromakey();
+        // testEncodeAndDecode();
         //testGetCountRedOverValue(250);
         //testSetRedToHalfValueInTopHalf();
         //testClearBlueOverValue(200);
