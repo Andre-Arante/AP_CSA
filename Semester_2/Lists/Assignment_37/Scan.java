@@ -99,7 +99,7 @@ public class Scan
      {
         List<String> scan = s.getScan();
         List<String> tumor = t.getTumor();
-
+        
          // Iterate through s and t simultaneously
          for (int anchorRow = 0; anchorRow < scan.size()-3; anchorRow++)
          {
@@ -108,35 +108,27 @@ public class Scan
              {
                  // Initalize counter for num of matches
                 int matches = 0;
+                List<String> scanGrid = new ArrayList<String>();
+                List<String> tumorGrid = new ArrayList<String>();
 
-                 // Move through a 4 by 4 grid vertically (row by row)
-                 for (int gridRow = 0; gridRow < 3; gridRow++) 
-                 {  
-                     // Fetch current row
-                    String tempScan = scan.get(anchorRow+gridRow);
-                    String tempTumor = tumor.get(anchorRow+gridRow);
+                // Get 4 by 4 grid of the scan
+                for (int i = 0; i < 4; i++)
+                {
+                  tumorGrid.add(tumor.get(anchorRow).substring(anchorCol, anchorCol+4));
+                  scanGrid.add(scan.get(anchorRow).substring(anchorCol, anchorCol+4));
+                }
 
-                     for (int gridCol = 0; gridCol < 3; gridCol++) 
-                     {
-                        int idx = anchorCol + gridCol;
+                for (String str : scanGrid) 
+                {
+                  System.out.println(str);
+                }
 
-                        // Check if corresponding scan idx equals corresponding tumor index
-                        if (tempTumor.charAt(idx) == tempScan.charAt(idx))
-                        {
-                          matches++;
-                        }
-                     }
-                     // If all squares in 4 by 4 grid were matches, tumor is found
-                     if (matches == 4)
-                     {
-                         this.y = anchorRow;
-                         this.x = anchorCol;
-                        return true;
-                     } 
-                 }
+                for (String foo : tumorGrid) 
+                {
+                  System.out.println(foo);
+                }
              }
          }
-
          // Return false if all were matches and function has still not returned
          return false;
      }
