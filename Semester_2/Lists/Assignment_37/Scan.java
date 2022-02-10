@@ -69,15 +69,17 @@ public class Scan
     {
         // Initalize result
         String result = "No tumors detected";
+        Tumor rotated;
 
         // Check if match 4 times: one for each 90 degree rotation
         for (int d = 0; d < 360; d+=90) 
         {
-            Tumor rotated = t.rotate(d);
+            
+            rotated = t.rotate(d);
             
             if (this.isMatch(new Scan(getScan()), rotated))
             {
-                result = new String("Possible tumor at (" + this.x + ", " + this.y + ", " + d + ")"); 
+              result = new String("Possible tumor at (" + this.x + ", " + this.y + ", " + d + ")"); 
             }
         }
 
@@ -95,35 +97,37 @@ public class Scan
      */
      public boolean isMatch(Scan s, Tumor t) 
      {
-         // Iterate through s and t simultaneously, break instantly if a mismatch is found
-         for (int anchorRow = 0; anchorRow < s.getScanLen()-4; anchorRow++)
+        List<String> scan = s.getScan();
+        List<String> tumor = t.getTumor();
+
+         // Iterate through s and t simultaneously
+         for (int anchorRow = 0; anchorRow < scan.size()-3; anchorRow++)
          {
             // Move through current column of the anchor
-             for (int anchorCol = 0; anchorCol < s.getScan().get(anchorRow).length()-4; anchorCol++) 
+             for (int anchorCol = 0; anchorCol < scan.get(anchorRow).length()-3; anchorCol++)
              {
                  // Initalize counter for num of matches
                 int matches = 0;
 
                  // Move through a 4 by 4 grid vertically (row by row)
-                 for (int gridRow = 0; gridRow < 4; gridRow++) 
-                 {
-                    
+                 for (int gridRow = 0; gridRow < 3; gridRow++) 
+                 {  
                      // Fetch current row
-                    String tempScan = s.getScan().get(gridRow);
-                    String tempTumor = t.getTumor().get(gridRow);
+                    String tempScan = scan.get(anchorRow+gridRow);
+                    String tempTumor = tumor.get(anchorRow+gridRow);
 
-                     for (int gridCol = 0; gridCol < 4; gridCol++) 
+                     for (int gridCol = 0; gridCol < 3; gridCol++) 
                      {
                         int idx = anchorCol + gridCol;
 
                         // Check if corresponding scan idx equals corresponding tumor index
-                        if (tempTumor.substring(idx, idx+1).equals(tempScan.substring(idx, idx+1)))
+                        if (tempTumor.charAt(idx) == tempScan.charAt(idx))
                         {
-                            matches++;
+                          matches++;
                         }
                      }
                      // If all squares in 4 by 4 grid were matches, tumor is found
-                     if (matches == 16)
+                     if (matches == 4)
                      {
                          this.y = anchorRow;
                          this.x = anchorCol;
