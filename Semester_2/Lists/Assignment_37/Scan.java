@@ -74,7 +74,6 @@ public class Scan
         // Check if match 4 times: one for each 90 degree rotation
         for (int d = 0; d < 360; d+=90) 
         {
-            
             rotated = t.rotate(d);
             
             if (this.isMatch(new Scan(getScan()), rotated))
@@ -97,40 +96,50 @@ public class Scan
      */
      public boolean isMatch(Scan s, Tumor t) 
      {
-        List<String> scan = s.getScan();
-        List<String> tumor = t.getTumor();
-        
-         // Iterate through s and t simultaneously
-         for (int anchorRow = 0; anchorRow < scan.size()-3; anchorRow++)
-         {
-            // Move through current column of the anchor
-             for (int anchorCol = 0; anchorCol < scan.get(anchorRow).length()-3; anchorCol++)
-             {
-                 // Initalize counter for num of matches
-                int matches = 0;
-                List<String> scanGrid = new ArrayList<String>();
-                List<String> tumorGrid = new ArrayList<String>();
+      List<String> scan = s.getScan();
+      List<String> tumorGrid = t.getTumor();
+      List<String> scanGrid = new ArrayList<String>();
 
-                // Get 4 by 4 grid of the scan
-                for (int i = 0; i < 4; i++)
-                {
-                  tumorGrid.add(tumor.get(anchorRow).substring(anchorCol, anchorCol+4));
-                  scanGrid.add(scan.get(anchorRow).substring(anchorCol, anchorCol+4));
-                }
+      // Move through rows
+      for (int anchorRow = 0; anchorRow < s.getScanLen()-t.getTumorLen()-1; anchorRow++)
+      {
+        // Move through columns
+        for (int anchorCol = 0; anchorCol < s.getScanLen()-t.getTumorLen()-1; anchorCol++)
+        {
+          // Initalize counter for num of matches and scan portion
+          int matches = 0;
+          scanGrid = new ArrayList<String>();
 
-                for (String str : scanGrid) 
-                {
-                  System.out.println(str);
-                }
+          // Get tumorlen by tumorlen grid of the scan
+          for (int i = 0; i < t.getTumorLen(); i++)
+          {
+            scanGrid.add(scan.get(i).substring(anchorCol, anchorCol + t.getTumorLen()));
+          }
 
-                for (String foo : tumorGrid) 
-                {
-                  System.out.println(foo);
-                }
-             }
-         }
-         // Return false if all were matches and function has still not returned
-         return false;
-     }
-    
-}
+          // System.out.println("\nScan Tumor");
+
+          for (int i = 0; i < scanGrid.size(); i++) 
+          {
+            
+            // String msg = " not match";
+            if (scanGrid.get(i).equals(tumorGrid.get(i)))
+            {
+              matches++;
+              // msg = " match";
+              // System.out.println("Matches " + matches);
+              // System.out.println();
+            }
+            // System.out.println(scanGrid.get(i) + " " + tumorGrid.get(i) + msg);
+          }   
+          if (matches == t.getTumorLen()) 
+          {
+            return true;
+          }  
+        }
+        scanGrid.clear();
+      }
+    return false; 
+    }
+  }
+
+
