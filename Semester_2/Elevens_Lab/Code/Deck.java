@@ -1,3 +1,5 @@
+
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -31,9 +33,12 @@ public class Deck {
      */
     public Deck(String[] ranks, String[] suits, int[] values) {
         this.cards = new ArrayList<Card>();
-        for (int i = 0; i < ranks.length-1; i++) {
-            Card aCard = new Card(ranks[i], suits[i], values[i]);
+        for (int i = 0; i < ranks.length; i++) {
+          for (int j = 0; j < suits.length; j++)
+            {
+              Card aCard = new Card(ranks[i], suits[j], values[i]);
             this.cards.add(aCard);
+            }
         }
         this.size = this.cards.size();
         shuffle();
@@ -65,6 +70,23 @@ public class Deck {
      */
     public void shuffle() {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+      int[] indicies = new int[cards.size()];
+      List<Card> unsorted = new ArrayList<Card>(cards);
+
+      // Initalize and shuffle the indicies
+      for (int i = 0; i < cards.size(); i++) 
+        {
+          indicies[i] = i;
+        }
+      Shuffler.selectionShuffle(indicies);
+
+      // Match each card with its new index
+      for (int j = 0; j < cards.size(); j++) 
+        {
+          cards.set(j, unsorted.get(indicies[j]));
+        }
+
+      size = cards.size();
     }
 
     /**
@@ -73,11 +95,8 @@ public class Deck {
      *         previously dealt.
      */
     public Card deal() {
-        this.size = this.size - 1;
-        if (this.size > 0) {
-            return this.cards.get(this.size);
-        }
-        else return null;
+        size--;
+      return size >= 0 ? cards.get(size) : null;
     }
 
     /**
