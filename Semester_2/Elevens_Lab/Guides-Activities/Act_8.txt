@@ -1,0 +1,26 @@
+
+    1. For Board and ElevensBoard, which is the superclass and which is the subclass. 
+    Explain why and also how you can tell by looking at the starter code.
+
+        ElevensBoard is the subclass that inherits from the superclass Board. You can tell because the ElevensBoard class extends Board
+
+    2. As discussed previously, all of the instance variables (deck and board) are declared in the Board class. 
+    But it is the ElevensBoard class that “knows” the board size, and the ranks, suits, and point values of the cards in the deck. 
+    How do the Board instance variables get initialized with the ElevensBoard values? Give the line of code and say where it would be put.
+
+        By calling the method > super() within the ElevensBoard constructor the ElevensBoard class will inherit the constructor from the Board class
+        Initalizing all the instance variables properly
+    
+    3. Explain why the deal method is in the Board class, but containsJQK is in the ElevensBoard class.
+
+        Containing JQK is method that is specific to the Elevens game and does not need to be implicitly inherited by every other class
+        that extends the Board class
+    
+    4. Should you use Board b = new ElevensBoard(); or ElevensBoard e = new ElevensBoard();? Explain.
+
+        ElevensBoard e = new ElevensBoard(); is better because it allows you to access methods from both classes 
+
+    5. Give two advantages of reorganizing the code and using inheritance instead of just using a single class.
+
+        1. resuing code that is shared among multiple classes
+        2. save time by being more organized and not having to edit the same code in multiple places
