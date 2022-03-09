@@ -1,6 +1,7 @@
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The ElevensBoard class represents the board in a game of Elevens.
@@ -39,8 +40,9 @@ public class ElevensBoard extends Board {
 	/**
 	 * Creates a new <code>ElevensBoard</code> instance, which is a subtype of Board.
 	 */
-	 public ElevensBoard() {
+	 public ElevensBoard(int size, String[] ranks, String[] suits, int[] pointValues) {
          /* *** TO BE IMPLEMENTED IN ACTIVITY 8 *** */
+		 super(size, ranks, suits, pointValues);	
      }
 
 	/**
@@ -52,9 +54,11 @@ public class ElevensBoard extends Board {
 	 * @return true if the selected cards form a valid group for removal;
 	 *         false otherwise.
 	 */
-	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		
+		/* handles pair of non-face cards and group of three cards */
+		return (this.containsPairSum11(selectedCards) || this.containsJQK(selectedCards));
 	}
 
 	/**
@@ -65,9 +69,17 @@ public class ElevensBoard extends Board {
 	 * @return true if there is a legal play left on the board;
 	 *         false otherwise.
 	 */
-	@Override
 	public boolean anotherPlayIsPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		List<Integer> dealt = new ArrayList<Integer>();
+		for (int i = 0; i < super.size(); i++)
+		{
+			Card c = super.cardAt(i);
+			int idx = c.rank();
+			
+			dealt.add();
+		}
+		return this.isLegal(dealt);	
 	}
 
 	/**
@@ -80,6 +92,16 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		int total = 0;
+		for (int i = 0; i < selectedCards.size(); i++)
+		{
+			/* make sure cards are non-face cards */
+			int cardValue = POINT_VALUES[selectedCards.get(i)];
+			if (cardValue >= 2 && cardValue <= 10) { total+=cardValue; } 
+			/* check if values add up to 11 */
+			if (total==11) { return true; }
+		}
+		return false;
 	}
 
 	/**
@@ -90,7 +112,33 @@ public class ElevensBoard extends Board {
 	 * @return true if the board entries in selectedCards
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
-	private boolean containsJQK(List<Integer> selectedCards) {
+	private boolean containsJQK(List<Integer> selectedCards) 
+	{
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		int passes = 0;
+
+		for (int i = 0; i < selectedCards.size(); i++)
+		{
+			/* check for face cards */
+			String rank = RANKS[selectedCards.get(i)];
+			String faces = "acejackkingqueen";
+			// System.out.println(selectedCards.get(i));
+			if (faces.contains(rank)) { passes++; }
+		}
+
+		if (passes >= 3) { return true; }
+		return false;
 	}
+
+public static void main(String[] args)
+    {
+        ElevensBoard b = new ElevensBoard(BOARD_SIZE, RANKS, SUITS, POINT_VALUES);
+        System.out.println("Should be false: " + b.isLegal(new ArrayList<Integer>(Arrays.asList(9, 10, 11))));
+		System.out.println("Should be false: " + b.isLegal(new ArrayList<Integer>(Arrays.asList(0))));
+		System.out.println("Should be false: " + b.isLegal(new ArrayList<Integer>(Arrays.asList(11, 5))));
+
+		System.out.println("Should be true: " + b.isLegal(new ArrayList<Integer>(Arrays.asList(1, 8))));
+		System.out.println("Should be true: " + b.isLegal(new ArrayList<Integer>(Arrays.asList(10, 11, 12))));
+		System.out.println("Should be true: " + b.isLegal(new ArrayList<Integer>(Arrays.asList(10, 11, 12, 0))));
+    }
 }
