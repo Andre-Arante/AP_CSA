@@ -34,7 +34,7 @@ public class ElevensBoard extends Board {
 	/**
 	 * Flag used to control debugging print statements.
 	 */
-	private static final boolean I_AM_DEBUGGING = false;
+	private static final boolean I_AM_DEBUGGING = true;
 
 
 	/**
@@ -62,6 +62,19 @@ public class ElevensBoard extends Board {
 	}
 
 	/**
+	 * Converts the string rank to index i of rank within RANKS arr
+	 * @return index i of card in ranks
+	 */
+	public int find_idx(String rnk) 
+	{
+		for (int i = 0; i < RANKS.length; i++)
+			{
+				if (RANKS[i].equals(rnk)) { return i; }
+			}
+		return -1;
+	}
+
+	/**
 	 * Determine if there are any legal plays left on the board.
 	 * In Elevens, there is a legal play if the board contains
 	 * (1) a pair of non-face cards whose values add to 11, or (2) a group
@@ -75,9 +88,7 @@ public class ElevensBoard extends Board {
 		for (int i = 0; i < super.size(); i++)
 		{
 			Card c = super.cardAt(i);
-			int idx = c.rank();
-			
-			dealt.add();
+			dealt.add(find_idx((c.rank())));
 		}
 		return this.isLegal(dealt);	
 	}
