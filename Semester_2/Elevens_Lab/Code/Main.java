@@ -38,7 +38,7 @@ public class Main {
          * Create ElevensBoard instance
          */
         /* *** TO BE IMPLEMENTED IN ACTIVITY 8 *** */
-        ElevensBoard board = new ElevensBoard(BOARD_SIZE, RANKS, SUITS, POINT_VALUES);
+        ThirteensBoard board = new ThirteensBoard(BOARD_SIZE, RANKS, SUITS, POINT_VALUES);
 
         /**
          * Create CardGameGUI instance
