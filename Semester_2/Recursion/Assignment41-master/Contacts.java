@@ -136,7 +136,22 @@ public class Contacts
      */
     public void sortContacts()
     {
-        sortContacts();
+        Person temp;
+
+        for (int i = 1; i < people.size(); i++)
+        {
+            for (int j = i; j > 0; j--)
+            {
+                String n1 = people.get(j).getName();
+                String n2 = people.get(j-1).getName();
+                if(n1.compareTo(n2)<0)
+                {
+                    temp = people.get(j);
+                    people.set(j, people.get(j-1));
+                    people.set(j-1, temp);
+                }
+            }
+        }
     }
 
     @Override
