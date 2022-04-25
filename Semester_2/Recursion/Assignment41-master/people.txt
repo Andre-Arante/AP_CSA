@@ -1,0 +1,47 @@
+George Washington, 4085555555, gwashington@potus.gov
+John Adams, 4085555555, jadams@whitehouse.gov
+Thomas Jefferson, 4085555555, tjefferson@whitehouse.gov
+James Madison, 4085555555, jmadison@whitehouse.gov
+James Monroe, 4085555555, jmonroe@whitehouse.gov
+John Quincy Adams, 4085555555, jqadams@whitehouse.gov
+Andrew Jackson, 4085555555, ajackson@whitehouse.gov
+Martin Van Buren, 4085555555, mvanburen@whitehouse.gov
+William Henry Harrison, 4085555555, wharrison@whitehouse.gov
+John Tyler, 4085555555, jtyler@whitehouse.gov
+James Knox Polk, 4085555555, jpolk@whitehouse.gov
+Zachary Taylor, 4085555555, ztaylor@whitehouse.gov
+Millard Fillmore, 4085555555, mfillmore@whitehouse.gov
+Franklin Pierce, 4085555555, fpierce@whitehouse.gov
+James Buchanan, 4085555555, jbuchanan@whitehouse.gov
+Abraham Lincoln, 7145555555, alincoln@whitehouse.gov
+Andrew Johnson, 7145555555, ajohnson@whitehouse.gov
+Ulysses S. Grant, 7145555555, ugrant@whitehouse.gov
+Rutherford Birchard Hayes, 7145555555, rhayes@whitehouse.gov
+James Abram Garfield, 7145555555, jgarfield@whitehouse.gov
+Chester Alan Arthur, 7145555555, carthur@whitehouse.gov
+Grover Cleveland, 7145555555, gcleveland@whitehouse.gov
+Benjamin Harrison, 7145555555, bharrison@whitehouse.gov
+Grover Cleveland, 7145555555, gcleveland@whitehouse.gov
+William McKinley, 7145555555, wmckinley@whitehouse.gov
+Theodore Roosevelt, 7145555555, troosevelt@whitehouse.gov
+William Howard Taft, 7145555555, wtaft@whitehouse.gov
+Woodrow Wilson, 7145555555, wwilson@whitehouse.gov
+Warren Gamaliel Harding, 7145555555, wharding@whitehouse.gov
+Calvin Coolidge, 7145555555, ccoolidge@whitehouse.gov
+Herbert Clark Hoover, 6055555555, hhoover@whitehouse.gov
+Franklin Delano Roosevelt, 6055555555, froosevelt@whitehouse.gov
+Harry S. Truman, 6055555555, htruman@whitehouse.gov
+Dwight David Eisenhower, 6055555555, deisenhower@whitehouse.gov
+John Fitzgerald Kennedy, 6055555555, jkennedy@whitehouse.gov
+Lyndon Baines Johnson, 6055555555, ljohnson@whitehouse.gov
+Richard Milhous Nixon, 6055555555, rnixon@whitehouse.gov
+Gerald Rudolph Ford, 6055555555, gford@whitehouse.gov
+James Earl Carter, Jr., 6055555555, jcarter@whitehouse.gov
+Ronald Wilson Reagan, 6055555555, rreagan@whitehouse.gov
+George Herbert Walker Bush, 6055555555, gbush@whitehouse.gov
+William Jefferson Clinton, 6055555555, wclinton@whitehouse.gov
+George Walker Bush, 6055555555, gwbush@whitehouse.gov
+Barack Hussein Obama, 6055555555, bobama@whitehouse.gov
+Donald J. Trump, 6055555555, dtrump@whitehouse.gov
+Joseph Biden, 5705555555, jbiden@whitehouse.gov
+
