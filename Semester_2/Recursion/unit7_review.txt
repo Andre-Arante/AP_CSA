@@ -1,0 +1,56 @@
+1. b
+
+2 * {6} = 32
+2 * {4} = 8
+2 * {2} = 4
+2 * {1} = 2
+
+2. b
+3 * {27} = 81
+3 * {9} = 27
+3 * {3} = 9 
+
+3. b
+
+// Recursivly counts # of y's not counting last index
+mystery(xyzxyxy)
+mystery(yzxyxy)
+mystery(1 + )
+
+4. 
+
+mystery(728) prints 8
+mystery(72) prints 2
+mystery(7) prints 7
+prints 8
+prints 2
+prints 7
+
+827728
+
+5. 
+
+public static int pow(int base, int exp) 
+{
+    if (exp == 0) return 1
+    else 
+    {
+        return base*pow(base, exp-1)
+    }
+}
+
+6. c
+
+7. 10
+
+8. Mergesort
+
+9. f
+
+10. 11
+
+11.
+For each item in the loop, you have to loop over 
+nearly every single other element and compare them. 
+This is implemented using nested for loops that each
+run about n times each. n*n = n^2

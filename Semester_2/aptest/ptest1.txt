@@ -1,0 +1,19 @@
+public class PasswordChecker {
+    // a)  
+    public static int numSymbols(String s) 
+    {
+        int s.length() - (numLetters(s) + numDigits(s));
+    }
+
+    // b) 
+    public static String passwordStrength(String p) 
+    {
+        int digits = numDigits(p);
+        int letters = numLetters(p);
+        int symbols = numSymbols(s);
+
+        if (digits >= 1 && letters >= 1 && symbols >= 1 && p.length() >= 8) return 'strong';
+        else if (p.length() >= 5 && p.length < 8 && numSymbols(p) > 1) return 'medium';
+        return 'weak';
+    }
+}
