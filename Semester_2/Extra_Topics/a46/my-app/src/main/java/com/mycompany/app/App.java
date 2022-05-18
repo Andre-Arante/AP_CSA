@@ -61,7 +61,9 @@ public class App {
             String jsonOutput = g.toJson(jsonObj);
             System.out.println(jsonOutput + "\n");
 
-            System.out.print(content);
+            // Create a person object 
+            Person p = gson.fromJson(jsonOutput.toString(), Person.class)
+            System.out.println(p.getName() + " is " + p.getAge() + " years old.");
         }
     }
 }
@@ -71,9 +73,7 @@ public class Person() {
     private String name;
     private int age;
 
-    public Person() {
-
-    }
+    public Person() { }
 
     public String getName() { return this.name; }
     public int getAge() { return this.age; }
